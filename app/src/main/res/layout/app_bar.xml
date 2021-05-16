@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:navigationIcon="@drawable/ic_arrow_back_24"
+        app:navigationIconTint="?colorOnPrimary"
         app:titleTextColor="?colorOnPrimary"
-        tools:title="Login"/>
+        tools:title="croxana" />
 
 </com.google.android.material.appbar.AppBarLayout>

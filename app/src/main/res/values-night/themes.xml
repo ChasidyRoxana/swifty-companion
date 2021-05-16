@@ -2,6 +2,8 @@
 
     <style name="Theme.Companion" parent="BaseTheme">
 
+        <item name="colorControlNormal">@color/white</item>
+
         <item name="backgroundGradient">@drawable/gradient_dark</item>
     </style>
 </resources>
