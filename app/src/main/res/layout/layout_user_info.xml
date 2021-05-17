@@ -18,7 +18,8 @@
         <ImageView
             android:id="@+id/ivImage"
             android:layout_width="180dp"
-            android:layout_height="180dp" />
+            android:layout_height="180dp"
+            android:contentDescription="@string/content_description_user_image" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.textview.MaterialTextView
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textAppearance="?textAppearanceHeadline1"
         app:layout_constraintTop_toBottomOf="@id/cvImage"
         tools:text="Chasidy Roxana" />
 
@@ -33,6 +35,7 @@
         android:id="@+id/ivPhone"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:contentDescription="@string/content_description_phone"
         android:src="@drawable/ic_phone_24"
         app:layout_constraintBottom_toBottomOf="@id/tvPhone"
         app:layout_constraintEnd_toStartOf="@id/tvPhone"
@@ -46,6 +49,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="?textAppearanceBody1Green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPhone"
         app:layout_constraintTop_toBottomOf="@id/tvName"
@@ -53,24 +58,26 @@
         tools:text="+7 000 000 00 00" />
 
     <ImageView
-        android:id="@+id/ivEmail"
+        android:id="@+id/ivMail"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:contentDescription="@string/content_description_mail"
         android:src="@drawable/ic_mail_24"
-        app:layout_constraintBottom_toBottomOf="@id/tvEmail"
-        app:layout_constraintEnd_toStartOf="@id/tvEmail"
+        app:layout_constraintBottom_toBottomOf="@id/tvMail"
+        app:layout_constraintEnd_toStartOf="@id/tvMail"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvEmail"
+        app:layout_constraintTop_toTopOf="@id/tvMail"
         app:tint="?colorControlNormal" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/tvMail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textAppearance="?textAppearanceBody1Green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivEmail"
+        app:layout_constraintStart_toEndOf="@id/ivMail"
         app:layout_constraintTop_toBottomOf="@id/tvPhone"
         app:layout_constraintWidth_default="wrap"
         tools:text="blabla@blabla.bla" />
@@ -79,6 +86,7 @@
         android:id="@+id/ivCity"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:contentDescription="@string/content_description_city"
         android:src="@drawable/ic_location_city_24"
         app:layout_constraintBottom_toBottomOf="@id/tvCity"
         app:layout_constraintEnd_toStartOf="@id/tvCity"
@@ -92,9 +100,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?textAppearanceBody1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivCity"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintTop_toBottomOf="@id/tvMail"
         app:layout_constraintWidth_default="wrap"
         tools:text="Moscow" />
 
@@ -109,7 +119,10 @@
         android:id="@+id/tvWallet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
+        android:textAppearance="?textAppearanceBody1Green"
         app:layout_constraintEnd_toEndOf="@id/guidelineCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCity"
@@ -120,16 +133,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="@id/guidelineCenter"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="@id/tvWallet"
+        app:layout_constraintStart_toStartOf="@id/tvWallet"
         app:layout_constraintTop_toBottomOf="@id/tvWallet"
-        tools:text="100 mln" />
+        tools:text="123" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCorrection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
+        android:textAppearance="?textAppearanceBody1Green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guidelineCenter"
         app:layout_constraintTop_toBottomOf="@id/tvCity"
@@ -140,9 +157,32 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineCenter"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="@id/tvCorrection"
+        app:layout_constraintStart_toStartOf="@id/tvCorrection"
         app:layout_constraintTop_toBottomOf="@id/tvCorrection"
-        tools:text="10 points" />
+        tools:text="10" />
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/pbLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicatorColor="@color/green_700"
+        app:layout_constraintTop_toBottomOf="@id/tvWalletCount"
+        app:trackCornerRadius="@dimen/corner_radius_default"
+        app:trackThickness="28dp"
+        tools:progress="50" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Companion.Body1"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/pbLevel"
+        app:layout_constraintEnd_toEndOf="@id/pbLevel"
+        app:layout_constraintStart_toStartOf="@id/pbLevel"
+        app:layout_constraintTop_toTopOf="@id/pbLevel"
+        tools:text="12.60%" />
 </androidx.constraintlayout.widget.ConstraintLayout>

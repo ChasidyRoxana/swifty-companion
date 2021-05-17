@@ -2,8 +2,13 @@
     <string name="app_name">Companion</string>
 
     <string name="text_search">Search</string>
+    <string name="text_level">%1$d%</string> <!-- todo если не сработает, попробовать: %1$d%% -->
 
     <string name="content_description_logo">Logo icon</string>
+    <string name="content_description_user_image">User image</string>
+    <string name="content_description_phone">Phone icon</string>
+    <string name="content_description_mail">Mail icon</string>
+    <string name="content_description_city">City icon</string>
 
     <string name="hint_user_login">Enter login</string>
 </resources>
