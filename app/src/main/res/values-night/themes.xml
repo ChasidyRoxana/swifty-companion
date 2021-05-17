@@ -1,8 +1,9 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.Companion" parent="BaseTheme">
 
         <item name="colorControlNormal">@color/white</item>
+        <item name="strokeColor">@color/gray_700</item>
 
         <item name="backgroundGradient">@drawable/gradient_dark</item>
         <item name="background">@color/black</item>

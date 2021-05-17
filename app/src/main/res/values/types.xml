@@ -12,6 +12,11 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextAppearance.Companion.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="TextAppearance.Companion.Body1Green" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">18sp</item>

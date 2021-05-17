@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
 
         <include
             android:id="@+id/appBar"
@@ -32,7 +33,7 @@
             android:id="@+id/tvProjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginHorizontal="36dp"
             android:layout_marginTop="8dp"
             android:textAppearance="?textAppearanceOverline"
             app:layout_constraintTop_toBottomOf="@id/cvUserInfo"
@@ -42,20 +43,24 @@
             android:id="@+id/cvUserProjects"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?backgroundElement"
+            android:backgroundTint="?backgroundElement"
             app:cardCornerRadius="@dimen/corner_radius_default"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@id/tvProjects">
 
-            <!-- <include layout="" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_project" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvSkills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginHorizontal="36dp"
             android:layout_marginTop="8dp"
             android:textAppearance="?textAppearanceOverline"
             app:layout_constraintTop_toBottomOf="@id/cvUserProjects"
@@ -65,13 +70,17 @@
             android:id="@+id/cvUserSkills"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?backgroundElement"
+            android:backgroundTint="?backgroundElement"
             app:cardCornerRadius="@dimen/corner_radius_default"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@id/tvSkills">
 
-            <!-- <include layout="" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_skill" />
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.Guideline

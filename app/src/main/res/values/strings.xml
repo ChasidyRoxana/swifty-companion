@@ -9,6 +9,8 @@
     <string name="content_description_phone">Phone icon</string>
     <string name="content_description_mail">Mail icon</string>
     <string name="content_description_city">City icon</string>
+    <string name="content_description_top_skill">Star icon</string>
+    <string name="content_description_project_status">Project status icon</string>
 
     <string name="hint_user_login">Enter login</string>
 </resources>

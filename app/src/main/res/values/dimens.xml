@@ -5,4 +5,5 @@
     <dimen name="corner_radius_default">12dp</dimen>
 
     <dimen name="size_icon_logo">172dp</dimen>
+    <dimen name="size_icon">24dp</dimen>
 </resources>

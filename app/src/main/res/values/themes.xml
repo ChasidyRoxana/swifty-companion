@@ -10,6 +10,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
         <item name="colorControlNormal">@color/black</item>
+        <item name="strokeColor">@color/gray_300</item>
 
         <item name="backgroundGradient">@drawable/gradient_light</item>
         <item name="background">@color/gray_100</item>
@@ -23,6 +24,7 @@
         <item name="textAppearanceBody1">@style/TextAppearance.Companion.Body1</item>
         <item name="textAppearanceBody1Green">@style/TextAppearance.Companion.Body1Green</item>
         <item name="textAppearanceOverline">@style/TextAppearance.Companion.Overline</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Companion.Body2</item>
     </style>
 
     <style name="Widget.Companion.Toolbar" parent="Widget.MaterialComponents.Toolbar">

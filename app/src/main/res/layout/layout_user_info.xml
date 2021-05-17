@@ -27,14 +27,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:layout_marginTop="4dp"
         android:textAppearance="?textAppearanceHeadline1"
         app:layout_constraintTop_toBottomOf="@id/cvImage"
         tools:text="Chasidy Roxana" />
 
     <ImageView
         android:id="@+id/ivPhone"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/size_icon"
+        android:layout_height="@dimen/size_icon"
         android:contentDescription="@string/content_description_phone"
         android:src="@drawable/ic_phone_24"
         app:layout_constraintBottom_toBottomOf="@id/tvPhone"
@@ -59,8 +60,8 @@
 
     <ImageView
         android:id="@+id/ivMail"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/size_icon"
+        android:layout_height="@dimen/size_icon"
         android:contentDescription="@string/content_description_mail"
         android:src="@drawable/ic_mail_24"
         app:layout_constraintBottom_toBottomOf="@id/tvMail"
@@ -75,6 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:textAppearance="?textAppearanceBody1Green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivMail"
@@ -84,8 +86,8 @@
 
     <ImageView
         android:id="@+id/ivCity"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/size_icon"
+        android:layout_height="@dimen/size_icon"
         android:contentDescription="@string/content_description_city"
         android:src="@drawable/ic_location_city_24"
         app:layout_constraintBottom_toBottomOf="@id/tvCity"
