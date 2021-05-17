@@ -52,6 +52,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scrollbars="none"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_project" />
         </com.google.android.material.card.MaterialCardView>
@@ -79,6 +80,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scrollbars="none"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_skill" />
         </com.google.android.material.card.MaterialCardView>
