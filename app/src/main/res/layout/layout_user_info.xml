@@ -17,105 +17,66 @@
 
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="@dimen/size_user_image"
+            android:layout_height="@dimen/size_user_image"
             android:contentDescription="@string/content_description_user_image" />
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvStaffBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_rounded_background_red"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:text="@string/text_staff"
+        android:textAllCaps="true"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvImage"
+        tools:visibility="visible" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="4dp"
+        android:gravity="center_horizontal"
         android:textAppearance="?textAppearanceHeadline1"
-        app:layout_constraintTop_toBottomOf="@id/cvImage"
+        app:layout_constraintTop_toBottomOf="@id/tvStaffBadge"
         tools:text="Chasidy Roxana" />
-
-    <ImageView
-        android:id="@+id/ivPhone"
-        android:layout_width="@dimen/size_icon"
-        android:layout_height="@dimen/size_icon"
-        android:contentDescription="@string/content_description_phone"
-        android:src="@drawable/ic_phone_24"
-        app:layout_constraintBottom_toBottomOf="@id/tvPhone"
-        app:layout_constraintEnd_toStartOf="@id/tvPhone"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvPhone"
-        app:tint="?colorControlNormal" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvPhone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textAppearance="?textAppearanceBody1Green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivPhone"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
-        app:layout_constraintWidth_default="wrap"
-        tools:text="+7 000 000 00 00" />
-
-    <ImageView
-        android:id="@+id/ivMail"
-        android:layout_width="@dimen/size_icon"
-        android:layout_height="@dimen/size_icon"
-        android:contentDescription="@string/content_description_mail"
-        android:src="@drawable/ic_mail_24"
-        app:layout_constraintBottom_toBottomOf="@id/tvMail"
-        app:layout_constraintEnd_toStartOf="@id/tvMail"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvMail"
-        app:tint="?colorControlNormal" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvMail"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:drawableStart="@drawable/ic_mail_24"
+        android:gravity="center_horizontal"
         android:textAppearance="?textAppearanceBody1Green"
+        app:drawableTint="?colorControlNormal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivMail"
-        app:layout_constraintTop_toBottomOf="@id/tvPhone"
-        app:layout_constraintWidth_default="wrap"
-        tools:text="blabla@blabla.bla" />
-
-    <ImageView
-        android:id="@+id/ivCity"
-        android:layout_width="@dimen/size_icon"
-        android:layout_height="@dimen/size_icon"
-        android:contentDescription="@string/content_description_city"
-        android:src="@drawable/ic_location_city_24"
-        app:layout_constraintBottom_toBottomOf="@id/tvCity"
-        app:layout_constraintEnd_toStartOf="@id/tvCity"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvCity"
-        app:tint="?colorControlNormal" />
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        tools:text="blabla@blabla.bla" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:textAppearance="?textAppearanceBody1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivCity"
-        app:layout_constraintTop_toBottomOf="@id/tvMail"
-        app:layout_constraintWidth_default="wrap"
-        tools:text="Moscow" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        android:layout_marginTop="4dp"
+        android:drawableStart="@drawable/ic_location_city_24"
+        android:textAppearance="?textAppearanceBody1"
+        app:drawableTint="?colorControlNormal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMail"
+        tools:text="Moscow" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvWallet"
@@ -124,11 +85,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
+        android:text="@string/title_wallet"
         android:textAppearance="?textAppearanceBody1Green"
-        app:layout_constraintEnd_toEndOf="@id/guidelineCenter"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/vVerticalDelimiter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCity"
-        tools:text="Wallet" />
+        tools:visibility="visible" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvWalletCount"
@@ -136,10 +99,23 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textAppearance="?textAppearanceBody1"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/tvWallet"
         app:layout_constraintStart_toStartOf="@id/tvWallet"
         app:layout_constraintTop_toBottomOf="@id/tvWallet"
-        tools:text="123" />
+        tools:text="123"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/vVerticalDelimiter"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="16dp"
+        android:background="?strokeColor"
+        app:layout_constraintBottom_toTopOf="@id/pbLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCity" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCorrection"
@@ -148,11 +124,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
+        android:text="@string/title_evaluation_point"
         android:textAppearance="?textAppearanceBody1Green"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineCenter"
+        app:layout_constraintStart_toStartOf="@id/vVerticalDelimiter"
         app:layout_constraintTop_toBottomOf="@id/tvCity"
-        tools:text="Evaluation points" />
+        tools:visibility="visible" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCorrectionCount"
@@ -160,31 +138,38 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textAppearance="?textAppearanceBody1"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/tvCorrection"
         app:layout_constraintStart_toStartOf="@id/tvCorrection"
         app:layout_constraintTop_toBottomOf="@id/tvCorrection"
-        tools:text="10" />
+        tools:text="10"
+        tools:visibility="visible" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/pbLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:indicatorColor="@color/green_700"
-        app:layout_constraintTop_toBottomOf="@id/tvWalletCount"
+        android:visibility="gone"
+        app:indicatorColor="?colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/tvCorrectionCount"
         app:trackCornerRadius="@dimen/corner_radius_default"
         app:trackThickness="28dp"
-        tools:progress="50" />
+        tools:progress="50"
+        tools:visibility="visible" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Companion.Body1"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/pbLevel"
         app:layout_constraintEnd_toEndOf="@id/pbLevel"
         app:layout_constraintStart_toStartOf="@id/pbLevel"
         app:layout_constraintTop_toTopOf="@id/pbLevel"
-        tools:text="12.60%" />
+        tools:text="12.50%"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

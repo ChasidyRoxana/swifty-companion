@@ -20,11 +20,15 @@
     <style name="TextAppearance.Companion.Body1Green" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/green_700</item>
+        <item name="android:textColor">?colorAccent</item>
     </style>
 
     <style name="TextAppearance.Companion.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <item name="fontFamily">sans-serif</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Companion.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

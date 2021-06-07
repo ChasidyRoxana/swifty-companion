@@ -9,7 +9,7 @@
         android:id="@+id/vDelimiter"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginHorizontal="@dimen/margin_default"
         android:background="?strokeColor"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,12 +27,12 @@
         app:layout_constraintEnd_toStartOf="@id/ivTopSkill"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Blabla" />
+        tools:text="Skill name" />
 
     <ImageView
         android:id="@+id/ivTopSkill"
-        android:layout_width="@dimen/size_icon"
-        android:layout_height="@dimen/size_icon"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/content_description_top_skill"
         android:src="@drawable/ic_star_24"

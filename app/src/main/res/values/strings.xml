@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">Companion</string>
 
+    <string name="title_wallet">Wallet</string>
+    <string name="title_evaluation_point">Evaluation points</string>
+    <string name="title_courses">Courses</string>
+    <string name="title_projects">Projects</string>
+    <string name="title_skills">Skills</string>
+    <string name="title_error_loading">Something went wrong</string>
+    <string name="title_empty_login">Login is empty</string>
+
     <string name="text_search">Search</string>
-    <string name="text_level">%1$d%</string> <!-- todo если не сработает, попробовать: %1$d%% -->
+    <string name="text_level">%1$s%%</string>
+    <string name="text_staff">Staff</string>
+    <string name="text_try_again">Try again</string>
+    <string name="text_ok">OK</string>
 
     <string name="content_description_logo">Logo icon</string>
     <string name="content_description_user_image">User image</string>
@@ -11,6 +22,7 @@
     <string name="content_description_city">City icon</string>
     <string name="content_description_top_skill">Star icon</string>
     <string name="content_description_project_status">Project status icon</string>
+    <string name="content_description_error">Error icon</string>
 
     <string name="hint_user_login">Enter login</string>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_url">https://api.intra.42.fr/</string>
+    <string name="grant_type">client_credentials</string>
+    <string name="client_id">d1c70c9241f1b831db9beed6f31037caec861db66847fb090597777f64671f6a</string>
+    <string name="client_secret">38693d23fd4fab22352ed9ff410e3d4869af7f5e412f6e2988c63cf36831ac6a</string>
+</resources>

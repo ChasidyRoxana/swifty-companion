@@ -4,10 +4,10 @@
 
         <item name="colorControlNormal">@color/white</item>
         <item name="strokeColor">@color/gray_700</item>
+        <item name="trackColor">@color/gray_700</item>
 
         <item name="backgroundGradient">@drawable/gradient_dark</item>
         <item name="background">@color/black</item>
         <item name="backgroundElement">@color/gray_900</item>
-        <item name="trackColor">@color/gray_700</item>
     </style>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bCurse"
+    style="?materialButtonOutlinedStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:checkable="true"
+    android:textAllCaps="false"
+    android:textAppearance="?textAppearanceBody2"
+    android:textColor="?colorOnBackground"
+    app:cornerRadius="@dimen/corner_radius_default"
+    tools:text="42cursus" />

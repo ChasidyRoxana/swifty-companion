@@ -5,5 +5,7 @@
     <dimen name="corner_radius_default">12dp</dimen>
 
     <dimen name="size_icon_logo">172dp</dimen>
-    <dimen name="size_icon">24dp</dimen>
+    <dimen name="size_user_image">150dp</dimen>
+    <dimen name="size_icon_small">24dp</dimen>
+    <dimen name="size_icon_medium">48dp</dimen>
 </resources>
