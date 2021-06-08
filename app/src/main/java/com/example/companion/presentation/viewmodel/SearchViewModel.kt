@@ -11,8 +11,20 @@ class SearchViewModel @Inject constructor() : BaseViewModel<SearchScreenState, S
     SearchScreenState()
 ) {
 
+    private fun updateScreenState(
+        login: String = model.login,
+        isErrorDialogVisible: Boolean = model.isErrorDialogVisible,
+        shouldRefreshView: Boolean = true
+    ) {
+        model = SearchScreenState(login = login, isErrorDialogVisible = isErrorDialogVisible)
+        if (shouldRefreshView) {
+            refreshView()
+        }
+    }
+
     fun onTextChanged(enteredText: Editable?) {
-        model.login = enteredText?.toString() ?: ""
+        val login = enteredText?.toString() ?: ""
+        updateScreenState(login = login, shouldRefreshView = false)
     }
 
     fun onSearchClicked() {
@@ -20,7 +32,11 @@ class SearchViewModel @Inject constructor() : BaseViewModel<SearchScreenState, S
         if (model.login.isNotBlank()) {
             executeCommand(SearchCommand.OpenProfileScreen(model.login))
         } else {
-            executeCommand(SearchCommand.ShowErrorLoginDialog)
+            updateScreenState(isErrorDialogVisible = true)
         }
+    }
+
+    fun onDialogDismissed() {
+        updateScreenState(isErrorDialogVisible = false)
     }
 }

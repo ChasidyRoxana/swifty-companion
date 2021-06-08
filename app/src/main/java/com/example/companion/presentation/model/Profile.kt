@@ -1,6 +1,7 @@
 package com.example.companion.presentation.model
 
 class Profile(
+    val imageUrl: String,
     val name: String,
     val email: String,
     val staff: Boolean,

@@ -28,11 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_default"
         android:gravity="center_horizontal"
-        android:text="@string/title_error_loading"
-        android:textAppearance="?textAppearanceHeadline1"
+        android:textAppearance="?textAppearanceBody1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivSadEmoji" />
+        app:layout_constraintTop_toBottomOf="@id/ivSadEmoji"
+        tools:text="@string/title_error_loading" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bTryAgain"

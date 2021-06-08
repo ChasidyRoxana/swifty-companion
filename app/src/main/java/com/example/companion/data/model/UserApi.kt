@@ -3,9 +3,9 @@ package com.example.companion.data.model
 import com.google.gson.annotations.SerializedName
 
 class UserApi(
+    val image_url: String,
     val email: String,
     val displayname: String,
-    val image_url: String,
     @SerializedName("staff?")
     val staff: Boolean,
     val correction_point: Int,

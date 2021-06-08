@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.example.companion.R
 import com.example.companion.databinding.FragmentProfileBinding
 import com.example.companion.presentation.adapter.CourseAdapter
@@ -34,7 +35,7 @@ class ProfileFragment : BaseFragment<ProfileScreenState, ProfileCommand, Profile
             viewModel.init(args.login)
         }
         setupAppBar(args.login)
-        setupListener()
+        setupView()
         setupAdapters()
     }
 
@@ -45,7 +46,7 @@ class ProfileFragment : BaseFragment<ProfileScreenState, ProfileCommand, Profile
         }
     }
 
-    private fun setupListener() =
+    private fun setupView() =
         with(binding) {
             layoutError.bTryAgain.setOnClickListener { viewModel.onTryAgainClicked() }
         }
@@ -63,6 +64,9 @@ class ProfileFragment : BaseFragment<ProfileScreenState, ProfileCommand, Profile
         with(binding) {
             cvProgressBar.isVisible = model.isLoading
             layoutError.clError.isVisible = model.isErrorVisible
+            model.errorMessageRes?.let {
+                layoutError.tvErrorMessage.setText(it)
+            }
         }
         updateUserInfo(model)
     }
@@ -78,6 +82,7 @@ class ProfileFragment : BaseFragment<ProfileScreenState, ProfileCommand, Profile
             with(binding) {
                 cvUserInfo.isVisible = model.isProfileInfoVisible
                 with(layoutUserInfo) {
+                    updateUserImage(profile.imageUrl)
                     tvStaffBadge.isVisible = profile.staff
                     tvName.text = profile.name
                     tvMail.text = profile.email
@@ -94,6 +99,13 @@ class ProfileFragment : BaseFragment<ProfileScreenState, ProfileCommand, Profile
             val course = profile.courses.find { it.id == model.currentCourseId }
             updateCourseInfo(course)
         }
+    }
+
+    private fun updateUserImage(imageUrl: String) {
+        Glide.with(requireContext())
+            .load(imageUrl)
+            .error(R.drawable.ic_pizza)
+            .into(binding.layoutUserInfo.ivImage)
     }
 
     private fun updateCourseInfo(course: UserCourse?) {

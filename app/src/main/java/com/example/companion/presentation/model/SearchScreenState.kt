@@ -1,5 +1,6 @@
 package com.example.companion.presentation.model
 
 class SearchScreenState(
-    var login: String = ""
+    val login: String = "",
+    val isErrorDialogVisible: Boolean = false
 ) : BaseScreenState

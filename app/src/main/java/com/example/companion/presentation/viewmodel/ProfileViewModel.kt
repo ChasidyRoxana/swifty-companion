@@ -1,5 +1,8 @@
 package com.example.companion.presentation.viewmodel
 
+import androidx.annotation.StringRes
+import com.example.companion.R
+import com.example.companion.data.model.EmptyResponseBody
 import com.example.companion.data.network.RequestListener
 import com.example.companion.data.repository.Repository
 import com.example.companion.domain.model.User
@@ -8,6 +11,7 @@ import com.example.companion.presentation.mapper.ProfileMapper
 import com.example.companion.presentation.model.Profile
 import com.example.companion.presentation.model.ProfileScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,6 +42,7 @@ class ProfileViewModel @Inject constructor(
         currentCourseId: Int = model.currentCourseId,
         profile: Profile? = model.profile,
         error: Throwable? = model.error,
+        @StringRes errorMessageRes: Int? = model.errorMessageRes,
         shouldRefreshView: Boolean = true
     ) {
         model = ProfileScreenState(
@@ -45,7 +50,8 @@ class ProfileViewModel @Inject constructor(
             isLoading = isLoading,
             currentCourseId = currentCourseId,
             profile = profile,
-            error = error
+            error = error,
+            errorMessageRes = errorMessageRes
         )
         if (shouldRefreshView) {
             refreshView()
@@ -63,7 +69,11 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun onTryAgainClicked() {
-        fetchUserProfile()
+        if (model.error is EmptyResponseBody) {
+            executeCommand(ProfileCommand.NavigateToPreviousScreen)
+        } else {
+            fetchUserProfile()
+        }
     }
 
     fun onNavigationBackClicked() {
@@ -81,19 +91,19 @@ class ProfileViewModel @Inject constructor(
             }
 
             override fun onError(t: Throwable) {
-                updateScreenState(error = t)
+                @StringRes val errorMessageRes = when (t) {
+                    is UnknownHostException -> R.string.title_error_loading
+                    is EmptyResponseBody -> R.string.title_error_empty_body
+                    else -> R.string.title_error_other
+                }
+                updateScreenState(error = t, errorMessageRes = errorMessageRes)
             }
 
-            override fun onSuccess(data: User) {
+            override fun onSuccess(data: User, action: (() -> Unit)?) {
                 val profile = mapper.mapToProfile(data)
-                val currentCourseId =
-                    if (profile.courses.isNotEmpty()) {
-                        val course = profile.courses.first()
-                        course.isCurrentCourse = true
-                        course.id
-                    } else {
-                        0
-                    }
+                val course = profile.courses.firstOrNull()
+                course?.isCurrentCourse = true
+                val currentCourseId: Int = course?.id ?: 0
                 updateScreenState(
                     currentCourseId = currentCourseId,
                     profile = profile,

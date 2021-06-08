@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_courses">Курсы</string>
+    <string name="title_projects">Проекты</string>
+    <string name="title_skills">Навыки</string>
+    <string name="title_error_loading">Не удалось загрузить. Проверьте подключение к интернету</string>
+    <string name="title_error_empty_body">Ничего не найдено. Убедитесь, что ввели правильный логин</string>
+    <string name="title_error_other">Что-то пошло не так</string>
+    <string name="title_empty_login">Логин пустой. Пожалуйста, введите чей-нибудь логин</string>
+
+    <string name="text_search">Найти</string>
+    <string name="text_try_again">Попробовать ещё раз</string>
+
+    <string name="content_description_logo">Логотип</string>
+    <string name="content_description_user_image">Фото пользователя</string>
+    <string name="content_description_mail">Иконка почты</string>
+    <string name="content_description_city">"Иконка города"</string>
+    <string name="content_description_top_skill">Иконка звездочки</string>
+    <string name="content_description_project_status">Иконка статуса проекта</string>
+    <string name="content_description_error">Иконка грустного смайлика</string>
+
+    <string name="hint_user_login">Введите логин</string>
+</resources>

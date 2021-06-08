@@ -22,14 +22,16 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
 ) {
 
     private val binding by viewBinding(FragmentSearchBinding::bind)
+    private lateinit var dialog: MaterialAlertDialogBuilder
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initListener()
+        setupView()
+        setupDialog()
     }
 
-    private fun initListener() {
+    private fun setupView() {
         binding.bSearch.setOnClickListener {
             viewModel.onSearchClicked()
         }
@@ -44,13 +46,22 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
         }
     }
 
-    override fun renderView(model: SearchScreenState) =
-        Unit
+    private fun setupDialog() {
+        dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.title_empty_login)
+            .setPositiveButton(R.string.text_ok, null)
+            .setOnDismissListener { viewModel.onDialogDismissed() }
+    }
+
+    override fun renderView(model: SearchScreenState) {
+        if (model.isErrorDialogVisible) {
+            showErrorLoginDialog()
+        }
+    }
 
     override fun executeCommand(command: SearchCommand) {
         when (command) {
             is SearchCommand.ClearFocusAndCloseKeyboard -> clearFocusAndCloseKeyboard()
-            is SearchCommand.ShowErrorLoginDialog -> showErrorLoginDialog()
             is SearchCommand.OpenProfileScreen -> openProfileScreen(command.login)
         }
     }
@@ -65,10 +76,7 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
     }
 
     private fun showErrorLoginDialog() {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.title_empty_login)
-            .setPositiveButton(R.string.text_ok, null)
-            .show()
+        dialog.show()
     }
 
     private fun openProfileScreen(login: String) {

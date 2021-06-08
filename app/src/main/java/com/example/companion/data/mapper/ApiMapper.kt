@@ -14,6 +14,7 @@ class ApiMapper {
 
     fun mapToUser(userApi: UserApi): User =
         User(
+            imageUrl = userApi.image_url,
             name = userApi.displayname,
             email = userApi.email,
             staff = userApi.staff,

@@ -1,8 +1,10 @@
 package com.example.companion.data.repository
 
 import android.content.res.Resources
+import android.util.Log
 import com.example.companion.R
 import com.example.companion.data.mapper.ApiMapper
+import com.example.companion.data.model.EmptyResponseBody
 import com.example.companion.data.model.TokenApi
 import com.example.companion.data.model.UserApi
 import com.example.companion.data.network.CompanionApi
@@ -28,10 +30,11 @@ class Repository(
     fun getUserProfile(login: String) {
         this.login = login
         requestListener?.onLoading(true)
-        updateTokenIfRequired()
-        accessToken?.let {
-            requestUserInformation(it.accessToken)
-        } ?: requestListener?.onError(Throwable("accessToken == null"))
+        updateTokenIfRequired {
+            accessToken?.let { token ->
+                requestUserInformation(token.accessToken)
+            }
+        }
     }
 
     fun setRequestListener(requestListener: RequestListener<User>) {
@@ -47,27 +50,29 @@ class Repository(
             override fun onLoading(isLoading: Boolean) {
             }
 
-            override fun onSuccess(data: Token) {
+            override fun onSuccess(data: Token, action: (() -> Unit)?) {
                 accessToken = data
-                requestUserInformation(data.accessToken)
+                action?.invoke()
             }
 
             override fun onError(t: Throwable) {
-                requestListener?.onError(t)
+                onErrorRequestHandler(t)
             }
         }
 
-    private fun updateTokenIfRequired() {
+    private fun updateTokenIfRequired(onSuccessAction: () -> Unit) {
         if (accessToken != null) {
             accessToken?.let { token ->
-                val tokenCreatedTime = token.createdAt // в токене время в секундах
+                val tokenCreatedTime = token.createdAt // в токене время хранится в секундах
                 val currentTime = Date().time / 1000 // секунда = миллисекунда * 1000
                 if (currentTime - tokenCreatedTime > token.expiresIn) {
-                    requestToken()
+                    requestToken(onSuccessAction)
+                } else {
+                    onSuccessAction.invoke()
                 }
             }
         } else {
-            requestToken()
+            requestToken(onSuccessAction)
         }
     }
 
@@ -76,19 +81,20 @@ class Repository(
         userCallbackHandler(userCallback)
     }
 
-    private fun requestToken() {
+    private fun requestToken(actionAfterUpdate: () -> Unit) {
+        Log.i("Repository", "Request token")
         val tokenCallback = api.getToken(getGrantType(), getClientId(), getClientSecret())
-        tokenCallbackHandler(tokenCallback)
+        tokenCallbackHandler(tokenCallback, actionAfterUpdate)
     }
 
-    private fun tokenCallbackHandler(tokenCallback: Call<TokenApi>) {
+    private fun tokenCallbackHandler(tokenCallback: Call<TokenApi>, actionAfterUpdate: () -> Unit) {
         tokenCallback.enqueue(object : Callback<TokenApi> {
             override fun onResponse(call: Call<TokenApi>, response: Response<TokenApi>) {
                 val tokenApi: TokenApi? = response.body()
                 if (tokenApi != null) {
-                    tokenListener.onSuccess(mapper.mapToToken(tokenApi))
+                    tokenListener.onSuccess(mapper.mapToToken(tokenApi), actionAfterUpdate)
                 } else {
-                    tokenListener.onError(Throwable("Empty token response body"))
+                    tokenListener.onError(EmptyResponseBody())
                 }
             }
 
@@ -106,7 +112,7 @@ class Repository(
                 if (userApi != null) {
                     onSuccessRequestHandler(mapper.mapToUser(userApi))
                 } else {
-                    onErrorRequestHandler(Throwable("Empty user response body"))
+                    onErrorRequestHandler(EmptyResponseBody())
                 }
             }
 

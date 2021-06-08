@@ -25,8 +25,8 @@ class UserProject(
 
     @ColorRes
     val finalMarkColor =
-        when {
-            validated == true && status == Status.Finished -> R.color.green_700
+        when (validated) {
+            true -> R.color.green_700
             else -> R.color.red_500
         }
 }

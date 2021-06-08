@@ -5,7 +5,6 @@
     <color name="transparent">#00000000</color>
 
     <color name="green_300">#FFA1FF8B</color>
-    <color name="green_500">#FF00BC37</color>
     <color name="green_700">#FF009A22</color>
 
     <color name="teal_300">#FF21BDB8</color>
@@ -21,5 +20,6 @@
     <color name="gray_300">#FFE0E0E0</color>
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_700">#FF616161</color>
+    <color name="gray_800">#FF424242</color>
     <color name="gray_900">#FF212121</color>
 </resources>
