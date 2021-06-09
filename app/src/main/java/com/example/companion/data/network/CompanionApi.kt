@@ -17,6 +17,7 @@ interface CompanionApi {
     fun getToken(
         @Query("grant_type") grantType: String,
         @Query("client_id") clientId: String,
-        @Query("client_secret") clientSecret: String
+        @Query("client_secret") clientSecret: String,
+        @Query("code") code: String?,
     ): Call<TokenApi>
 }

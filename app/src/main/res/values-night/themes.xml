@@ -2,6 +2,8 @@
 
     <style name="Theme.Companion" parent="BaseTheme">
 
+        <item name="colorPrimaryVariant">@color/purple_900</item>
+
         <item name="colorControlNormal">@color/white</item>
         <item name="strokeColor">@color/gray_700</item>
         <item name="trackColor">@color/gray_800</item>

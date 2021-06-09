@@ -22,10 +22,15 @@ class Repository(
     private val resources: Resources
 ) {
 
+    private var userCode: String? = null
     private var accessToken: Token? = null
     private var login: String = ""
     private var requestListener: RequestListener<User>? = null
     private val tokenListener = createTokenListener()
+
+    fun setUserCode(code: String) {
+        userCode = code
+    }
 
     fun getUserProfile(login: String) {
         this.login = login
@@ -83,7 +88,7 @@ class Repository(
 
     private fun requestToken(actionAfterUpdate: () -> Unit) {
         Log.i("Repository", "Request token")
-        val tokenCallback = api.getToken(getGrantType(), getClientId(), getClientSecret())
+        val tokenCallback = api.getToken(getGrantType(), getClientId(), getClientSecret(), userCode)
         tokenCallbackHandler(tokenCallback, actionAfterUpdate)
     }
 

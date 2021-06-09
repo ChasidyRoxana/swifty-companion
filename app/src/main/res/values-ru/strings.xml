@@ -6,8 +6,10 @@
     <string name="title_error_loading">Не удалось загрузить. Проверьте подключение к интернету</string>
     <string name="title_error_empty_body">Ничего не найдено. Убедитесь, что ввели правильный логин</string>
     <string name="title_error_other">Что-то пошло не так</string>
-    <string name="title_empty_login">Логин пустой. Пожалуйста, введите чей-нибудь логин</string>
+    <string name="title_error_authorization">С авторизацией что-то пошло не так</string>
+    <string name="title_error_empty_login">Логин пустой. Пожалуйста, введите чей-нибудь логин</string>
 
+    <string name="text_log_in">Войти</string>
     <string name="text_search">Найти</string>
     <string name="text_try_again">Попробовать ещё раз</string>
 

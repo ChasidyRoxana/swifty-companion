@@ -37,6 +37,7 @@
     <style name="Widget.Companion.MaterialButton" parent="Widget.MaterialComponents.Button">
         <item name="android:padding">12dp</item>
         <item name="backgroundTint">@color/blue_700</item>
+        <item name="cornerRadius">@dimen/corner_radius_default</item>
     </style>
 
     <style name="Companion.CardView" parent="Widget.MaterialComponents.CardView">

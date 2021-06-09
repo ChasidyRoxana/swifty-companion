@@ -1,10 +1,14 @@
 package com.example.companion.presentation.fragment
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.StringRes
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.companion.R
@@ -27,35 +31,55 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (savedInstanceState == null) {
+            val uriData: String? = activity?.intent?.data?.toString()
+            viewModel.init(uriData)
+        }
         setupView()
         setupDialog()
     }
 
     private fun setupView() {
-        binding.bSearch.setOnClickListener {
-            viewModel.onSearchClicked()
-        }
-        binding.etUserLogin.doAfterTextChanged { text -> viewModel.onTextChanged(text) }
-        binding.etUserLogin.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+        with(binding) {
+            bSearch.setOnClickListener {
                 viewModel.onSearchClicked()
-                true
-            } else {
-                false
+            }
+            etUserLogin.doAfterTextChanged { text -> viewModel.onTextChanged(text) }
+            etUserLogin.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    viewModel.onSearchClicked()
+                    true
+                } else {
+                    false
+                }
+            }
+            bLogIn.setOnClickListener {
+                openAuthorization()
             }
         }
     }
 
+    private fun openAuthorization() {
+        val link = URL_AUTH
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+        activity?.startActivity(browserIntent)
+    }
+
     private fun setupDialog() {
         dialog = MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.title_empty_login)
             .setPositiveButton(R.string.text_ok, null)
             .setOnDismissListener { viewModel.onDialogDismissed() }
     }
 
     override fun renderView(model: SearchScreenState) {
-        if (model.isErrorDialogVisible) {
-            showErrorLoginDialog()
+        when {
+            model.isErrorEmptyLoginVisible -> showErrorDialog(R.string.title_error_empty_login)
+            model.isErrorAuthorizationVisible -> showErrorDialog(R.string.title_error_authorization)
+        }
+        with(binding) {
+            bLogIn.isVisible = !model.isAuthorized
+            cvUserLogin.isVisible = model.isAuthorized
+            bSearch.isVisible = model.isAuthorized
         }
     }
 
@@ -75,12 +99,17 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
         }
     }
 
-    private fun showErrorLoginDialog() {
-        dialog.show()
+    private fun showErrorDialog(@StringRes errorMessageRes: Int) {
+        dialog.setTitle(errorMessageRes).show()
     }
 
     private fun openProfileScreen(login: String) {
         val args = ProfileFragmentArgs(login).toBundle()
         navController.navigate(R.id.action_searchFragment_to_profileFragment, args)
+    }
+
+    companion object {
+        private const val URL_AUTH =
+            "https://api.intra.42.fr/oauth/authorize?client_id=d1c70c9241f1b831db9beed6f31037caec861db66847fb090597777f64671f6a&redirect_uri=http%3A%2F%2Fwww.example.com%2Fmyapp&response_type=code"
     }
 }
