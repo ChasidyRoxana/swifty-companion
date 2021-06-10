@@ -104,6 +104,7 @@ class ProfileFragment : BaseFragment<ProfileScreenState, ProfileCommand, Profile
     private fun updateUserImage(imageUrl: String) {
         Glide.with(requireContext())
             .load(imageUrl)
+            .centerCrop()
             .error(R.drawable.ic_pizza)
             .into(binding.layoutUserInfo.ivImage)
     }
