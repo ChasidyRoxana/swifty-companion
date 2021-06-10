@@ -70,7 +70,7 @@ class Repository(
             accessToken?.let { token ->
                 val tokenCreatedTime = token.createdAt // в токене время хранится в секундах
                 val currentTime = Date().time / 1000 // секунда = миллисекунда * 1000
-                if (currentTime - tokenCreatedTime > token.expiresIn) {
+                if (currentTime > tokenCreatedTime + token.expiresIn) {
                     requestToken(onSuccessAction)
                 } else {
                     onSuccessAction.invoke()
