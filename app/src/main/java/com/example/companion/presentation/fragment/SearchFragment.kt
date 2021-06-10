@@ -54,15 +54,9 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
                 }
             }
             bLogIn.setOnClickListener {
-                openAuthorization()
+                viewModel.onLogInClicked()
             }
         }
-    }
-
-    private fun openAuthorization() {
-        val link = URL_AUTH
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        activity?.startActivity(browserIntent)
     }
 
     private fun setupDialog() {
@@ -86,8 +80,15 @@ class SearchFragment : BaseFragment<SearchScreenState, SearchCommand, SearchView
     override fun executeCommand(command: SearchCommand) {
         when (command) {
             is SearchCommand.ClearFocusAndCloseKeyboard -> clearFocusAndCloseKeyboard()
+            is SearchCommand.OpenAuthorization -> openAuthorization()
             is SearchCommand.OpenProfileScreen -> openProfileScreen(command.login)
         }
+    }
+
+    private fun openAuthorization() {
+        val link = URL_AUTH
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+        activity?.startActivity(browserIntent)
     }
 
     private fun clearFocusAndCloseKeyboard() {

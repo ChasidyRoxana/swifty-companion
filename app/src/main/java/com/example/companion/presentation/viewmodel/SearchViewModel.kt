@@ -45,6 +45,9 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    fun onLogInClicked() =
+        executeCommand(SearchCommand.OpenAuthorization)
+
     fun onTextChanged(enteredText: Editable?) {
         val login = enteredText?.toString() ?: ""
         updateScreenState(login = login, shouldRefreshView = false)
@@ -59,7 +62,6 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun onDialogDismissed() {
+    fun onDialogDismissed() =
         updateScreenState(isErrorAuthorizationVisible = false, isErrorEmptyLoginVisible = false)
-    }
 }
