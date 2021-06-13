@@ -1,7 +1,6 @@
 package com.example.companion.data.repository
 
 import android.content.res.Resources
-import android.util.Log
 import com.example.companion.R
 import com.example.companion.data.mapper.ApiMapper
 import com.example.companion.data.model.EmptyResponseBody
@@ -87,7 +86,6 @@ class Repository(
     }
 
     private fun requestToken(actionAfterUpdate: () -> Unit) {
-        Log.i("Repository", "Request token")
         val tokenCallback = api.getToken(getGrantType(), getClientId(), getClientSecret(), userCode)
         tokenCallbackHandler(tokenCallback, actionAfterUpdate)
     }
